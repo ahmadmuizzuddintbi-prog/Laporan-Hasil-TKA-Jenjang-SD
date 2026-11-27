@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Laporan Belajar TKA Bahasa Indonesia SD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* tata letak: satu kolom 720px, kartu bertumpuk, angka besar di atas, grafik di tengah, catatan di bawah */
+  --bg: #f4f6f3; --surface: #ffffff; --ink: #1d2b2a; --muted: #5e6e6c; --line: #dde4e1;
+  --accent: #1f7a6d; --accent-soft: #e1f0ec; --target: #d9622b;
+  --good: #2e7d5b; --near: #a8731a; --low: #c2410c; --none: #aab6b3;
+  --good-soft: #e0f1e8; --near-soft: #f8edd5; --low-soft: #fbe4d8;
+  --font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101a19; --surface: #172423; --ink: #e6efed; --muted: #9db0ad; --line: #2a3b39;
+    --accent: #4cc2af; --accent-soft: #1d3733; --target: #f08a5d;
+    --good: #5fcf98; --near: #e3b45d; --low: #f08a5d; --none: #5f716f;
+    --good-soft: #1b3a2d; --near-soft: #3a3019; --low-soft: #3d2518;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101a19; --surface: #172423; --ink: #e6efed; --muted: #9db0ad; --line: #2a3b39;
+  --accent: #4cc2af; --accent-soft: #1d3733; --target: #f08a5d;
+  --good: #5fcf98; --near: #e3b45d; --low: #f08a5d; --none: #5f716f;
+  --good-soft: #1b3a2d; --near-soft: #3a3019; --low-soft: #3d2518;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 48px; display: flex; flex-direction: column; gap: 14px; }
+header { display: flex; flex-direction: column; gap: 6px; padding: 4px 2px 2px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--font-display); font-size: 30px; line-height: 1.15; margin: 0; font-weight: 800; text-wrap: balance; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.chip.quiet { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.card h2 { font-family: var(--font-display); font-size: 16px; margin: 0 0 4px; font-weight: 800; }
+.card .sub { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+.summary { display: flex; flex-direction: column; gap: 14px; }
+.pill { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.pill.near { background: var(--near-soft); color: var(--near); }
+.pill.low { background: var(--low-soft); color: var(--low); }
+.pill.none { background: var(--accent-soft); color: var(--muted); }
+.summary p { margin: 6px 0 0; font-size: 16px; font-weight: 600; text-wrap: pretty; }
+.trend { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.tile { background: var(--accent-soft); border-radius: 12px; padding: 12px 10px; text-align: center; }
+.tile b { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tile span { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600; }
+@media (max-width: 520px) { .tiles { grid-template-columns: repeat(2, 1fr); } h1 { font-size: 26px; } }
+.journey { display: flex; flex-direction: column; gap: 10px; }
+.bar { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+.journey .row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+.next { background: var(--accent-soft); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.next b { color: var(--accent); }
+.chart { width: 100%; height: auto; display: block; }
+.chart text { fill: var(--muted); font-family: var(--font-body); font-size: 11px; }
+.chart .val { fill: var(--ink); font-weight: 700; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .targetline { stroke: var(--target); stroke-width: 2; stroke-dasharray: 6 4; }
+.chart .targetlabel { fill: var(--target); font-weight: 700; }
+.chart .barfill { fill: var(--accent); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; }
+.legend i.dash { height: 0; width: 18px; border-top: 2px dashed var(--target); border-radius: 0; vertical-align: 3px; }
+.empty { color: var(--muted); font-size: 14px; padding: 18px 4px; text-align: center; }
+.group h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 14px 0 8px; font-weight: 700; }
+.group:first-child h3 { margin-top: 0; }
+.skill { margin-bottom: 10px; }
+.skill .top { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; margin-bottom: 4px; }
+.skill .top span:last-child { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.track { position: relative; height: 10px; border-radius: 999px; background: var(--line); }
+.track > i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; }
+.track > u { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--target); }
+.s-good > i { background: var(--good); } .s-near > i { background: var(--near); } .s-low > i { background: var(--low); }
+.tag { font-size: 12px; font-weight: 700; margin-left: 6px; }
+.t-good { color: var(--good); } .t-near { color: var(--near); } .t-low { color: var(--low); } .t-none { color: var(--muted); font-weight: 600; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 520px) { .two { grid-template-columns: 1fr; } }
+.focus b { display: block; font-size: 15px; margin-bottom: 2px; }
+.focus small { color: var(--muted); font-size: 13px; }
+.note { white-space: pre-line; font-size: 15px; margin: 0; text-wrap: pretty; }
+.note + .when { color: var(--muted); font-size: 12px; margin-top: 6px; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+details summary { cursor: pointer; font-weight: 800; font-family: var(--font-display); font-size: 16px; }
+details summary:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.tablewrap { overflow-x: auto; margin-top: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 420px; }
+th, td { text-align: left; padding: 8px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-size: 12px; font-weight: 700; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+footer { color: var(--muted); font-size: 12px; text-align: center; padding: 6px 12px; }
+.invalid { margin-top: 12vh; text-align: center; }
+.invalid h1 { font-size: 22px; }
+.invalid p { color: var(--muted); }
+button.refresh { font: inherit; font-size: 12px; font-weight: 700; color: var(--accent); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+button.refresh:hover { background: var(--accent-soft); }
+@media (prefers-reduced-motion: no-preference) { .bar > i, .track > i { transition: width .5s ease; } }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+(function () {
+  // ISI SATU BARIS INI: tempel URL aplikasi web Apps Script (yang berakhiran /exec), tanpa tambahan apa pun.
+  var API_URL = 'GANTI_DENGAN_URL_APPS_SCRIPT';
+  var AUTH = null;
+  var MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+  var app = document.getElementById('app');
+  var SVGNS = 'http://www.w3.org/2000/svg';
+
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'text') n.textContent = attrs[k];
+      else if (k === 'class') n.className = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+  function sv(tag, attrs, text) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function pct(x) { return x === null || x === undefined ? '-' : Math.round(x * 100) + '%'; }
+  function dparts(iso) { var p = String(iso).split('-'); return { y: +p[0], m: +p[1], d: +p[2] }; }
+  function dshort(iso) { var p = dparts(iso); return p.d + ' ' + MONTH[p.m - 1]; }
+  function dlong(iso) {
+    var p = dparts(iso);
+    var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    var dow = new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay();
+    var full = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return days[dow] + ', ' + p.d + ' ' + full[p.m - 1] + ' ' + p.y;
+  }
+  function daysBetween(a, b) {
+    var x = dparts(a), y = dparts(b);
+    return Math.round((Date.UTC(y.y, y.m - 1, y.d) - Date.UTC(x.y, x.m - 1, x.d)) / 86400000);
+  }
+  var STATUS = { good: 'Sudah baik', near: 'Hampir tercapai', low: 'Perlu latihan' };
+
+  /* ----- grafik 1: hasil per pertemuan (SVG) ----- */
+  function sessionChart(d) {
+    var S = d.sessions;
+    if (!S.length) return el('div', { class: 'empty', text: 'Grafik akan muncul setelah hasil latihan pertama dicatat.' });
+    var W = Math.max(300, Math.min(688, document.documentElement.clientWidth - 66)), H = 260, L = 36, R = 68, T = 20, B = 44;
+    var pw = W - L - R, ph = H - T - B, k = S.length;
+    var svg = sv('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'chart', role: 'img', 'aria-label': 'Grafik persentase soal benar pada setiap pertemuan dibandingkan target' });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (g) {
+      var y = T + ph - g * ph;
+      svg.appendChild(sv('line', { x1: L, x2: W - R, y1: y, y2: y, class: 'grid' }));
+      svg.appendChild(sv('text', { x: L - 6, y: y + 4, 'text-anchor': 'end' }, Math.round(g * 100) + '%'));
+    });
+    var slot = pw / k, bw = Math.min(46, slot * 0.62);
+    var showAll = slot >= 22;
+    S.forEach(function (s, i) {
+      var cx = L + slot * i + slot / 2, h = s.pct * ph, y = T + ph - h;
+      var r = sv('rect', { x: cx - bw / 2, y: y, width: bw, height: Math.max(h, 1), rx: 4, class: 'barfill' });
+      r.appendChild(sv('title', {}, 'Pertemuan ' + s.n + ' (' + dshort(s.date) + '): ' + s.benar + ' dari ' + s.soal + ' soal benar (' + pct(s.pct) + ')'));
+      svg.appendChild(r);
+      if (showAll || i === k - 1) svg.appendChild(sv('text', { x: cx, y: y - 6, 'text-anchor': 'middle', class: 'val' }, pct(s.pct)));
+      var every = slot >= 24 ? 1 : (slot >= 14 ? 2 : 3);
+      if (i % every === 0 || i === k - 1) {
+        svg.appendChild(sv('text', { x: cx, y: H - 26, 'text-anchor': 'middle' }, 'P' + s.n));
+        if (slot >= 46) svg.appendChild(sv('text', { x: cx, y: H - 11, 'text-anchor': 'middle' }, dshort(s.date)));
+      }
+    });
+    var ty = T + ph - d.target * ph;
+    svg.appendChild(sv('line', { x1: L, x2: W - R, y1: ty, y2: ty, class: 'targetline' }));
+    svg.appendChild(sv('text', { x: W - R + 6, y: ty + 4, 'text-anchor': 'start', class: 'targetlabel' }, 'Target ' + pct(d.target)));
+    return svg;
+  }
+
+  /* ----- grafik 2: per kemampuan (HTML) ----- */
+  function skillChart(d) {
+    var wrap = el('div');
+    var groups = {};
+    d.subs.forEach(function (s) { (groups[s.group] = groups[s.group] || []).push(s); });
+    var names = ['Memahami isi bacaan', 'Menyimpulkan isi bacaan', 'Menilai dan menghargai bacaan', 'Paket TKA lengkap'];
+    var any = false;
+    [0, 1, 2, 3].forEach(function (g) {
+      var list = groups[g] || [];
+      if (g === 3 && !list.some(function (s) { return s.soal > 0; })) return;
+      var box = el('div', { class: 'group' }, [el('h3', { text: names[g] })]);
+      list.forEach(function (s) {
+        any = any || s.soal > 0;
+        var track = el('div', { class: 'track' + (s.status ? ' s-' + s.status : '') });
+        if (s.pct !== null) track.appendChild(el('i', { style: 'width:' + Math.max(2, Math.round(s.pct * 100)) + '%' }));
+        track.appendChild(el('u', { style: 'left:' + Math.round(d.target * 100) + '%' }));
+        var right = el('span', {}, [
+          document.createTextNode(s.pct === null ? 'Belum dilatih' : pct(s.pct)),
+          s.status ? el('em', { class: 'tag t-' + s.status, text: STATUS[s.status], style: 'font-style:normal' }) : null
+        ]);
+        box.appendChild(el('div', { class: 'skill' }, [
+          el('div', { class: 'top' }, [el('span', { text: s.label }), right]), track
+        ]));
+      });
+      wrap.appendChild(box);
+    });
+    if (!any) wrap.insertBefore(el('div', { class: 'empty', text: 'Rincian per kemampuan akan tampil setelah hasil latihan dicatat.' }), wrap.firstChild);
+    return wrap;
+  }
+
+  function historyTable(d) {
+    var rows = d.sessions.slice().reverse();
+    var tb = el('tbody');
+    rows.forEach(function (s) {
+      tb.appendChild(el('tr', {}, [
+        el('td', { class: 'num', text: dshort(s.date) }),
+        el('td', {}, [document.createTextNode(s.materi), s.catatan ? el('div', { class: 'trend', text: s.catatan }) : null]),
+        el('td', { class: 'num', text: s.benar + ' / ' + s.soal }),
+        el('td', { class: 'num', text: pct(s.pct) })
+      ]));
+    });
+    var table = el('table', {}, [
+      el('thead', {}, [el('tr', {}, [el('th', { text: 'Tanggal' }), el('th', { text: 'Materi' }), el('th', { text: 'Benar' }), el('th', { text: 'Persen' })])]), tb
+    ]);
+    return el('details', { class: 'card' }, [el('summary', { text: 'Riwayat latihan (' + rows.length + ' pertemuan)' }), el('div', { class: 'tablewrap' }, [table])]);
+  }
+
+  var lastData = null;
+  function render(d) {
+    lastData = d;
+    app.textContent = '';
+    if (!d || !d.ok) {
+      app.appendChild(el('div', { class: 'invalid' }, [
+        el('h1', { text: 'Laporan tidak dapat dibuka' }),
+        el('p', { text: (d && d.message) || 'Link tidak valid. Mohon minta link terbaru kepada tentor.' })
+      ]));
+      return;
+    }
+    var left = Math.max(0, daysBetween(d.today, d.progress.tka));
+    var upd = new Date(d.updated);
+    var hh = ('0' + upd.getHours()).slice(-2) + '.' + ('0' + upd.getMinutes()).slice(-2);
+    var refresh = el('button', { class: 'refresh', type: 'button', text: 'Segarkan' });
+    refresh.addEventListener('click', load);
+
+    app.appendChild(el('header', {}, [
+      el('div', { class: 'eyebrow', text: 'Bimbel Persiapan TKA · Bahasa Indonesia SD' }),
+      el('h1', { text: d.nama }),
+      el('div', { class: 'meta' }, [
+        el('span', { class: 'chip', text: left + ' hari menuju TKA SD (5 April 2027)' }),
+        el('span', { class: 'chip quiet', text: 'Diperbarui ' + dshort(d.today) + ', ' + hh }),
+        refresh
+      ])
+    ]));
+
+    var s = d.summary;
+    var sc = el('section', { class: 'card summary', 'aria-label': 'Ringkasan' }, [
+      el('div', {}, [
+        el('span', { class: 'pill ' + s.level, text: s.level === 'good' ? 'Sudah baik' : s.level === 'near' ? 'Hampir tercapai' : s.level === 'low' ? 'Perlu penguatan' : 'Belum ada data' }),
+        el('p', { text: s.text }),
+        d.trend ? el('div', { class: 'trend', text: d.trend.text }) : null
+      ]),
+      el('div', { class: 'tiles' }, [
+        el('div', { class: 'tile' }, [el('b', { text: pct(d.latest) }), el('span', { text: 'Latihan terakhir' })]),
+        el('div', { class: 'tile' }, [el('b', { text: pct(d.avg) }), el('span', { text: 'Rata-rata' })]),
+        el('div', { class: 'tile' }, [el('b', { text: pct(d.target) }), el('span', { text: 'Target' })]),
+        el('div', { class: 'tile' }, [el('b', { text: pct(d.hadir.pct) }), el('span', { text: 'Kehadiran' })])
+      ])
+    ]);
+    app.appendChild(sc);
+
+    var held = d.progress.held, tot = d.progress.total;
+    var journey = el('section', { class: 'card journey', 'aria-label': 'Perjalanan belajar' }, [
+      el('h2', { text: 'Perjalanan menuju TKA' }),
+      el('div', { class: 'bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(tot), 'aria-valuenow': String(held), 'aria-label': 'Pertemuan yang sudah berlangsung' }, [el('i', { style: 'width:' + Math.round(held / tot * 100) + '%' })]),
+      el('div', { class: 'row' }, [el('span', { text: held + ' dari ' + tot + ' pertemuan sudah berlangsung' }), el('span', { text: 'Mulai 21 Sep 2026 · TKA 5–8 Apr 2027' })])
+    ]);
+    if (d.next) {
+      var nx = el('div', { class: 'next' });
+      nx.appendChild(document.createTextNode('Pertemuan berikutnya: '));
+      nx.appendChild(el('b', { text: dlong(d.next.date) }));
+      nx.appendChild(document.createTextNode(' · ' + d.next.materi));
+      journey.appendChild(nx);
+    }
+    app.appendChild(journey);
+
+    var c1 = el('section', { class: 'card', 'aria-label': 'Hasil per pertemuan' }, [
+      el('h2', { text: 'Hasil latihan tiap pertemuan' }),
+      el('p', { class: 'sub', text: 'Persentase soal yang dijawab benar. Garis jingga adalah target.' }),
+      sessionChart(d),
+      el('div', { class: 'legend' }, [
+        el('span', {}, [el('i', { style: 'background:var(--accent)' }), document.createTextNode('Soal benar')]),
+        el('span', {}, [el('i', { class: 'dash' }), document.createTextNode('Target')])
+      ])
+    ]);
+    app.appendChild(c1);
+
+    var c2 = el('section', { class: 'card', 'aria-label': 'Hasil per kemampuan' }, [
+      el('h2', { text: 'Kemampuan yang dilatih' }),
+      el('p', { class: 'sub', text: 'Garis jingga pada tiap batang menandai target.' }),
+      skillChart(d),
+      el('div', { class: 'legend' }, [
+        el('span', {}, [el('i', { style: 'background:var(--good)' }), document.createTextNode('Sudah baik')]),
+        el('span', {}, [el('i', { style: 'background:var(--near)' }), document.createTextNode('Hampir tercapai (selisih 10 poin atau kurang)')]),
+        el('span', {}, [el('i', { style: 'background:var(--low)' }), document.createTextNode('Perlu latihan')])
+      ])
+    ]);
+    app.appendChild(c2);
+
+    if (d.best || d.worst) {
+      app.appendChild(el('div', { class: 'two' }, [
+        el('section', { class: 'card focus' }, [el('h2', { text: 'Sudah kuat' }), d.best ? el('b', { text: d.best.label }) : null, d.best ? el('small', { text: pct(d.best.pct) + ' soal benar' }) : el('small', { text: '-' })]),
+        el('section', { class: 'card focus' }, [el('h2', { text: 'Perlu dilatih' }), d.worst ? el('b', { text: d.worst.label }) : null, d.worst ? el('small', { text: pct(d.worst.pct) + ' soal benar' }) : el('small', { text: 'Belum ada bagian yang tertinggal.' })])
+      ]));
+    }
+
+    var notes = el('section', { class: 'card stack', 'aria-label': 'Catatan tentor' });
+    notes.appendChild(el('h2', { text: 'Catatan dari tentor' }));
+    if (d.note) {
+      notes.appendChild(el('div', {}, [el('p', { class: 'note', text: d.note.text }), el('div', { class: 'when', text: 'Pertemuan ' + dshort(d.note.date) })]));
+    } else {
+      notes.appendChild(el('p', { class: 'note', text: 'Catatan akan tampil setelah jurnal pertemuan diisi.' }));
+    }
+    if (d.pr) {
+      notes.appendChild(el('div', {}, [el('h2', { text: 'Latihan di rumah' }), el('p', { class: 'note', text: d.pr.text }), el('div', { class: 'when', text: 'Dari pertemuan ' + dshort(d.pr.date) })]));
+    }
+    app.appendChild(notes);
+
+    if (d.sessions.length) app.appendChild(historyTable(d));
+    app.appendChild(el('footer', { text: 'Angka dihitung dari soal latihan yang dikerjakan di bimbel. TKA bukan ujian kelulusan; hasil latihan ini hanya gambaran kesiapan.' }));
+  }
+
+  function loading() {
+    app.textContent = '';
+    app.appendChild(el('div', { class: 'invalid' }, [el('h1', { text: 'Memuat laporan...' }), el('p', { text: 'Mohon tunggu sebentar.' })]));
+  }
+  function fetchData(silent) {
+    var url = API_URL + (API_URL.indexOf('?') < 0 ? '?' : '&') + 'api=1&k=' + encodeURIComponent(AUTH.k) + '&t=' + encodeURIComponent(AUTH.t);
+    var ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = ctl ? setTimeout(function () { ctl.abort(); }, 25000) : null;
+    var fail = function () { if (!silent) render({ ok: false, message: 'Data belum dapat dimuat. Muat ulang halaman beberapa saat lagi.' }); };
+    fetch(url, { method: 'GET', credentials: 'omit', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { if (!r.ok) throw new Error('http'); return r.json(); })
+      .then(function (r) { if (timer) clearTimeout(timer); if (!silent || (r && r.ok)) render(r); })
+      .catch(function () { if (timer) clearTimeout(timer); fail(); });
+  }
+  function load() { if (AUTH) fetchData(true); }
+
+  function start() {
+    if (!/^https:\/\/script\.google\.com\//.test(API_URL)) {
+      render({ ok: false, message: 'Alamat Apps Script belum diisi pada berkas index.html.' });
+      return;
+    }
+    var q = new URLSearchParams(window.location.search);
+    AUTH = { k: String(q.get('k') || ''), t: String(q.get('t') || '') };
+    if (!AUTH.k || !AUTH.t) {
+      AUTH = null;
+      render({ ok: false, message: 'Link tidak lengkap. Mohon buka lewat link yang diberikan tentor.' });
+      return;
+    }
+    loading();
+    fetchData(false);
+    setInterval(function () { if (!document.hidden) load(); }, 120000);
+  }
+
+  var rz = null, lastW = document.documentElement.clientWidth;
+  window.addEventListener('resize', function () {
+    clearTimeout(rz);
+    rz = setTimeout(function () { var w = document.documentElement.clientWidth; if (w !== lastW && lastData) { lastW = w; render(lastData); } }, 200);
+  });
+  start();
+})();
+</script>
+</body>
+</html>
